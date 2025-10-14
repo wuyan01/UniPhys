@@ -37,7 +37,7 @@ cond_mask_prob: 0.1
 state_with_root: True
 
 diffusion:
-  use_ema: True
+  use_ema: False
   ema_decay: 0.9995
   clip_noise: 1
   timesteps: 50

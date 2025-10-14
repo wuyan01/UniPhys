@@ -10,8 +10,8 @@ training:
   precision: 32 # set float precision, 16-mixed is faster while 32 is more stable
   batch_size: 512 # 
   lr_decay: "cyclic_cosine"
-  cycle_steps: 2000000  ## used only for the cyclic_cosine
-  max_steps: 2000000 # 
+  cycle_steps: 4000000  ## used only for the cyclic_cosine
+  max_steps: 4000000 # 
   max_epochs: -1
   checkpointing:
     monitor: "mean_episode_length"

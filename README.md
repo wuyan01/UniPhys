@@ -185,7 +185,7 @@ python scripts/data_process/download_babel_dataset.py
 python scripts/vis/replay_babel_state_action_text_pairs.py --load_motion_path data/babel_state-action-text-pairs/babel_train.pkl
 ```
 
-2. \[optional\] We also provide the state-action pairs for the full AMASS dataset (excluding infeasible motions such as climbing stairs or leaning on objects) on Hugging Face. You can download the complete list of AMASS motions and reconstruct the dataset from scratch if desired.
+2. \[optional\] We also provide the [state-action pairs for the full AMASS dataset](https://huggingface.co/datasets/yan0116/SMPL_Humanoid_offline_dataset) (excluding infeasible motions such as climbing stairs or leaning on objects) on Hugging Face. You can download the complete list of AMASS motions and reconstruct the dataset from scratch if desired.
 
 In this work, we build the training dataset with text annotations from the BABEL training set, but you can also create your own customized training dataset using the raw AMASS state-action pairs to suit your needs.
 
@@ -233,17 +233,16 @@ diffusion_forcing.algorithm.guidance_params=0 \
 diffusion_forcing.dataset.data_path_list="data/babel_state-action-text-pairs/babel_train.pkl" \
 diffusion_forcing.dataset.skip_text=False \
 diffusion_forcing.dataset.n_frames=32 \
-diffusion_forcing.dataset.stride=16 \
+diffusion_forcing.dataset.stride=10 \
 +diffusion_forcing.dataset.load_key_actions=null \
 diffusion_forcing.task="training" \
-diffusion_forcing.algorithm.diffusion.ema_decay=0.995 \
-+diffusion_forcing.name=uniphys_ema0995_babel_train
++diffusion_forcing.name=uniphys
 ```
 We evaluate the policy every 100 training epochs with unconditional random generation, and the training loss and evaluation metrics (episode lengths) are logged with Wandb.
 
 
 ## Acknowledgements
-Our code build upon these greate repositories:
+Our code build upon these great repositories:
 - Simulation environment setup and tracking policy is from: [PULSE](https://github.com/ZhengyiLuo/PULSE)
 - Policy training paradigm is build upon: [Diffusion Forcing](https://github.com/buoyancy99/diffusion-forcing)
 

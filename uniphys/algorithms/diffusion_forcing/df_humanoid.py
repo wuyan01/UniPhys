@@ -44,7 +44,7 @@ class DiffusionForcingHumanoid(DiffusionForcingBase):
             self.ema_decay = cfg.diffusion.ema_decay
             self.ema_model = None
 
-        self.text_embedding_dict = joblib.load("data/babel_tracking_results/text_embedding_dict_clip.pkl")
+        self.text_embedding_dict = joblib.load("data/babel_state-action-text-pairs/text_embedding_dict_clip.pkl")
         super().__init__(cfg)
 
         ## for saving episodes
@@ -586,6 +586,7 @@ class DiffusionForcingHumanoid(DiffusionForcingBase):
                     if not self.cfg.skip_text and self.guidance_params > 0:
                         if getattr(self.cfg, "interactive_input_prompt", False):
                             if flags.prompt:
+                                print("\n")
                                 text = input("\033[34mEnter the text prompt: \033[0m")
                                 flags.prompt = False
                                 print("\033[1mPress Q to input new command\033[0m")
