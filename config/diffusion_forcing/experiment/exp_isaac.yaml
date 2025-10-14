@@ -1,0 +1,33 @@
+defaults:
+  - base_pytorch
+
+tasks: [training]
+
+training:
+  train_key_action: null
+  train_action_sample_prob: null
+  lr: 1.0e-4  # base: 1e-4 for single GPU
+  precision: 32 # set float precision, 16-mixed is faster while 32 is more stable
+  batch_size: 512 # 
+  lr_decay: "cyclic_cosine"
+  cycle_steps: 2000000  ## used only for the cyclic_cosine
+  max_steps: 2000000 # 
+  max_epochs: -1
+  checkpointing:
+    monitor: "mean_episode_length"
+    filename: "{epoch:06d}-{mean_episode_length:.2f}"
+    mode: "max"
+    save_top_k: 10
+    every_n_epochs: 100
+    save_last: true
+  optim:
+    gradient_clip_val: 1.0
+
+
+validation:
+  precision: 32 # set float precision, 16-mixed is faster while 32 is more stable
+  val_every_n_step: null
+  val_every_n_epoch: 1
+  batch_size: null
+  limit_batch: null
+

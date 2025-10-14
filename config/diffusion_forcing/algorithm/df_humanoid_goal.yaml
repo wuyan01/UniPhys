@@ -1,0 +1,5 @@
+defaults:
+  - df_humanoid
+
+scheduling_matrix: pyramid
+chunk_size: 28

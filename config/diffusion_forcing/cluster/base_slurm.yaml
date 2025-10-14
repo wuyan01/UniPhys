@@ -1,0 +1,26 @@
+is_compute_node_offline: False # many slurm systems only allows internet on login node, not compute node
+
+params:
+  env_name: diffusion-forcing # change this to the name of your conda environment
+  num_gpus: 2
+  num_cpus: 16
+  memory: 10000
+  gpumem: 20g
+  time: "24:00:00" # Acceptable time formats include "minutes", "minutes:seconds", "hours:minutes:seconds", "days-hours", "days-hours:minutes" and "days-hours:minutes:seconds".
+  email: null
+
+launch_template: |
+  #!/bin/bash
+
+  #SBATCH -o {log_dir}/out_%j.out
+  #SBATCH -e {log_dir}/error_%j.err
+  #SBATCH -n {num_cpus}
+  #SBATCH --gres=gpu:{num_gpus}
+  #SBATCH --mem-per-cpu={memory}
+  #SBATCH --time={time}
+  #SBATCH --gres=gpumem:20g
+
+  source ~/.bashrc
+  conda activate {env_name}
+  cd {project_root}
+  python -m main {python_args}

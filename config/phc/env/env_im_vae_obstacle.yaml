@@ -1,0 +1,9 @@
+defaults:
+  - env_im_vae
+
+
+# if given, will override the device setting in gym. 
+task: HumanoidImDistillGetupObstacle
+
+tar_min: 2
+tar_max: 3

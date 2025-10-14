@@ -1,0 +1,18 @@
+# configuration parsing starts here
+defaults:
+  - experiment: exp_isaac # experiment yaml file name in configurations/experiments folder [fixme]
+  - dataset: isaac_babel # dataset yaml file name in configurations/dataset folder [fixme]
+  - algorithm: df_humanoid # algorithm yaml file name in configurations/algorithm folder [fixme]
+  - cluster: null # optional, cluster yaml file name in configurations/cluster folder. Leave null for local compute
+
+debug: false # global debug flag will be passed into configuration of experiment, dataset and algorithm
+
+wandb:
+  entity: yan0116 # wandb account name / organization name [fixme]
+  project: UniPhys # wandb project name; if not provided, defaults to root folder name [fixme]
+  mode: online # set wandb logging to online, offline or dryrun
+
+play: true
+resume: null # wandb run id to resume logging and loading checkpoint from
+load: null # wanmdb run id containing checkpoint or a path to a checkpoint file
+task: null

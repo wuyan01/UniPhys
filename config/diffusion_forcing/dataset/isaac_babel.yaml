@@ -1,0 +1,34 @@
+defaults:
+  - base_dataset
+
+observation_shape: [383]  
+state_dim: 351  
+repr_name_list: ['local_positions', 'local_vel', 'dof_pose_6d', 'dof_vel']
+data_path_list: ["/nfs/tang.scratch.inf.ethz.ch/export/tang/cluster/wuyan/code/PHC/output/HumanoidIm/phc_comp_kp_2/noise_tracking_data/simple_run/000/noise000_eval_info_amass_isaac_simple_run_upright_slim.pkl"]
+filter_keyword: null 
+skip_text: false
+action_keys: ["z"]  # ["action"], ["z"]
+action_dim: 32 # [69], [32]
+norm_action: True
+n_frames: 32
+context_length: 4 
+stride: 16  ## stride when clip the sequence
+frame_skip: 1
+mean: null
+std: null
+only_smpl: True  # True: smpl, False: smplx 
+action_rep: "3d"
+# validation_multiplier: 1
+
+gamma: null
+
+observation_mean: null 
+observation_std: null 
+action_mean: null 
+action_std: null 
+reward_mean: null 
+reward_std: null 
+
+
+
+

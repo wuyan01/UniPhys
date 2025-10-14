@@ -1,0 +1,57 @@
+defaults:
+  - df_base
+
+# dataset info
+data_mean: null
+data_std: null
+n_frames: ${diffusion_forcing.dataset.n_frames}
+observation_mean: ${diffusion_forcing.dataset.observation_mean}
+observation_std: ${diffusion_forcing.dataset.observation_std}
+norm_action: ${diffusion_forcing.dataset.norm_action}
+action_mean: ${diffusion_forcing.dataset.action_mean}
+action_std: ${diffusion_forcing.dataset.action_std}
+action_dim: ${diffusion_forcing.dataset.action_dim}
+action_keys: ${diffusion_forcing.dataset.action_keys}
+state_dim: ${diffusion_forcing.dataset.state_dim}
+observation_shape: ${diffusion_forcing.dataset.observation_shape}
+gamma: ${diffusion_forcing.dataset.gamma}
+# non dataset info
+skip_text: ${diffusion_forcing.dataset.skip_text}
+guidance_params: 2.5
+x_shape: ${diffusion_forcing.dataset.observation_shape}
+frame_stack: 1
+context_frames: ${diffusion_forcing.dataset.context_length}
+causal: True
+# training hyperparameters
+weight_decay: 1e-4
+lr_decay: ${diffusion_forcing.experiment.training.lr_decay}
+warmup_steps: 10000
+cycle_steps: ${diffusion_forcing.experiment.training.cycle_steps}
+max_steps: ${diffusion_forcing.experiment.training.max_steps}
+# diffusion inference related
+chunk_size: 8
+scheduling_matrix: autoregressive
+external_cond_dim: 0
+cond_mask_prob: 0.1
+# motion representation related
+state_with_root: True
+
+diffusion:
+  use_ema: True
+  ema_decay: 0.9995
+  clip_noise: 1
+  timesteps: 50
+  stabilization_level: 3
+  beta_schedule: cosine # sigmoid
+  objective: pred_x0
+  ddim_sampling_eta: 0.0
+  sampling_timesteps: 5
+  exec_step: 8
+  model_type: dec
+  architecture:
+    network_size: 768
+    k_emb_size: 64
+    num_layers: 12
+    attn_heads: 8
+    dim_feedforward: 2048
+    dropout: 0.1

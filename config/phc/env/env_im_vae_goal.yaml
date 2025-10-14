@@ -1,0 +1,11 @@
+defaults:
+  - env_im_vae
+
+# if given, will override the device setting in gym. 
+task: HumanoidImDistillGetupGoal
+
+tar_min: 1
+tar_max: 6
+tar_min_height: 0.9
+tar_max_height: 0.92
+joint_idx: 0  # [0: Pelvis; 18: L_Hand, 23: R_Hand, 13: Head]

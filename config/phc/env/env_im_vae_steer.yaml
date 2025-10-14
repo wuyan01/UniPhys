@@ -1,0 +1,10 @@
+defaults:
+  - env_im_vae
+
+# if given, will override the device setting in gym. 
+task: HumanoidImDistillGetupSteer
+
+tar_speed_min: 1.0
+tar_speed_max: 1.5
+change_steps_min: 299
+change_steps_max: 300
